@@ -1,0 +1,3 @@
+admin admin 1
+coach coach 2
+adherent adherent 3
