@@ -36,10 +36,12 @@ create_window1 (void)
   GtkWidget *label3;
   GtkWidget *label1;
   GtkWidget *label2;
-  GtkWidget *button1;
   GtkWidget *label4;
+  GtkWidget *button1;
+  GtkWidget *button2;
 
   window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (window1, 300, 300);
   gtk_window_set_title (GTK_WINDOW (window1), _("Login"));
 
   fixed1 = gtk_fixed_new ();
@@ -74,18 +76,26 @@ create_window1 (void)
   gtk_fixed_put (GTK_FIXED (fixed1), label2, 40, 80);
   gtk_widget_set_size_request (label2, 96, 40);
 
-  button1 = gtk_button_new_with_mnemonic (_("Login"));
-  gtk_widget_show (button1);
-  gtk_fixed_put (GTK_FIXED (fixed1), button1, 152, 192);
-  gtk_widget_set_size_request (button1, 112, 48);
-
   label4 = gtk_label_new ("");
   gtk_widget_show (label4);
   gtk_fixed_put (GTK_FIXED (fixed1), label4, 88, 256);
   gtk_widget_set_size_request (label4, 256, 32);
 
+  button1 = gtk_button_new_with_mnemonic (_("Login"));
+  gtk_widget_show (button1);
+  gtk_fixed_put (GTK_FIXED (fixed1), button1, 64, 192);
+  gtk_widget_set_size_request (button1, 112, 48);
+
+  button2 = gtk_button_new_with_mnemonic (_("Quitter"));
+  gtk_widget_show (button2);
+  gtk_fixed_put (GTK_FIXED (fixed1), button2, 192, 192);
+  gtk_widget_set_size_request (button2, 120, 48);
+
   g_signal_connect ((gpointer) button1, "clicked",
                     G_CALLBACK (on_button1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button2, "clicked",
+                    G_CALLBACK (on_button2_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -96,9 +106,94 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, label3, "label3");
   GLADE_HOOKUP_OBJECT (window1, label1, "label1");
   GLADE_HOOKUP_OBJECT (window1, label2, "label2");
-  GLADE_HOOKUP_OBJECT (window1, button1, "button1");
   GLADE_HOOKUP_OBJECT (window1, label4, "label4");
+  GLADE_HOOKUP_OBJECT (window1, button1, "button1");
+  GLADE_HOOKUP_OBJECT (window1, button2, "button2");
 
   return window1;
+}
+
+GtkWidget*
+create_window2 (void)
+{
+  GtkWidget *window2;
+  GtkWidget *fixed2;
+  GtkWidget *label5;
+
+  window2 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (window2, 300, 300);
+  gtk_window_set_title (GTK_WINDOW (window2), _("window2"));
+
+  fixed2 = gtk_fixed_new ();
+  gtk_widget_show (fixed2);
+  gtk_container_add (GTK_CONTAINER (window2), fixed2);
+
+  label5 = gtk_label_new (_("Bienvenue administrateur"));
+  gtk_widget_show (label5);
+  gtk_fixed_put (GTK_FIXED (fixed2), label5, 80, 24);
+  gtk_widget_set_size_request (label5, 240, 72);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window2, window2, "window2");
+  GLADE_HOOKUP_OBJECT (window2, fixed2, "fixed2");
+  GLADE_HOOKUP_OBJECT (window2, label5, "label5");
+
+  return window2;
+}
+
+GtkWidget*
+create_window3 (void)
+{
+  GtkWidget *window3;
+  GtkWidget *fixed3;
+  GtkWidget *label6;
+
+  window3 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (window3, 300, 300);
+  gtk_window_set_title (GTK_WINDOW (window3), _("window3"));
+
+  fixed3 = gtk_fixed_new ();
+  gtk_widget_show (fixed3);
+  gtk_container_add (GTK_CONTAINER (window3), fixed3);
+
+  label6 = gtk_label_new (_("Bienvenue coach"));
+  gtk_widget_show (label6);
+  gtk_fixed_put (GTK_FIXED (fixed3), label6, 72, 24);
+  gtk_widget_set_size_request (label6, 256, 80);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window3, window3, "window3");
+  GLADE_HOOKUP_OBJECT (window3, fixed3, "fixed3");
+  GLADE_HOOKUP_OBJECT (window3, label6, "label6");
+
+  return window3;
+}
+
+GtkWidget*
+create_window4 (void)
+{
+  GtkWidget *window4;
+  GtkWidget *fixed4;
+  GtkWidget *label7;
+
+  window4 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (window4, 300, 300);
+  gtk_window_set_title (GTK_WINDOW (window4), _("window4"));
+
+  fixed4 = gtk_fixed_new ();
+  gtk_widget_show (fixed4);
+  gtk_container_add (GTK_CONTAINER (window4), fixed4);
+
+  label7 = gtk_label_new (_("Bienvenue adherent"));
+  gtk_widget_show (label7);
+  gtk_fixed_put (GTK_FIXED (fixed4), label7, 56, 16);
+  gtk_widget_set_size_request (label7, 296, 80);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window4, window4, "window4");
+  GLADE_HOOKUP_OBJECT (window4, fixed4, "fixed4");
+  GLADE_HOOKUP_OBJECT (window4, label7, "label7");
+
+  return window4;
 }
 

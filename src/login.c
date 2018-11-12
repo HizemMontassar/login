@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+/*
 
 void ajouter(char login[], char password[],int role)
 {
@@ -27,27 +28,32 @@ void afficher ()
 }
 
 //=============================================================================
-
+*/
 int verifier(char login[], char password[])
 {
 	int verif=-1;
-	FILE* f;
+	FILE *f;
 	char r_login[30];char r_password[30];
-	int r_role;
+	int r_role=-1 ;
 	f=fopen("/home/montassar/Projects/login/src/liste/users.txt","r");
 	if(f!=NULL)
 	{
-		while (fscanf(f,"%s %s %d",r_login,r_password,&r_role)!=EOF)
+	
+		while (fscanf(f,"%s %s %d\n",r_login,r_password,&r_role) != EOF)
 		{
-		
-		if (((strcmp(login,r_login)==0)&&(strcmp(password,r_password)==0)))
-		{
-		verif=r_role;
+			if (((strcmp(login,r_login)==0)&&(strcmp(password,r_password)==0)))
+			{
+			verif=r_role;
+			}
 		}
-		}
+		fclose(f);		
 	}
-fclose(f);
-return(verif);
+	else{
+		printf("erreur syntax\n");
+		}
+
+return verif;
+
 }
 
 
